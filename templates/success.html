@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registration Successful</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="form-container">
+
+        <h1>REGISTRATION SUCCESSFUL 🎉</h1>
+
+        <h2>{{ sport }} Team Registered Successfully!</h2>
+
+        <p>Your registration has been saved successfully.</p>
+
+        <br>
+
+        <!-- New Registration -->
+        <a href="/{{ sport|lower }}" class="main-button">
+            New Registration
+        </a>
+
+        <br><br>
+
+        <!-- View My Registration -->
+        <a href="/my-registration" class="second-button">
+            📋 View My Registration
+        </a>
+
+        <br><br>
+
+
+        <!-- Back to Home -->
+        <a href="/" class="second-button">
+            Back to Home
+        </a>
+
+    </div>
+
+</body>
+
+</html>

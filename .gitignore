@@ -1,0 +1,10 @@
+tournament.db
+__pycache__/
+*.pyc
+tournament.db
+__pycache__/
+*.pyc
+.env
+venv/
+.venv/
+instance/

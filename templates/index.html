@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tournament Registration</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="main-container">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div class="logo-box">
+                <img src="{{ url_for('static', filename='final logo.png') }}"
+                     alt="Tournament Logo">
+            </div>
+
+            <nav class="navbar">
+                <a href="/">Home</a>
+                <a href="/football-info">Football</a>
+                 <a href="/about">About Us</a>
+                <a href="/contact">Contact</a>
+            </nav>
+
+        </header>
+
+
+        <!-- HOME SECTION -->
+        <section class="hero-section">
+
+            <div class="hero-content">
+
+                <p class="small-heading">
+                    WELCOME TO THE WORLD OF SPORTS
+                </p>
+
+                <h1>
+                    TOURNAMENT
+                    <span>REGISTRATION</span>
+                </h1>
+
+                <p class="description">
+                    Register your team and participate in exciting sports
+                    tournaments. Show your talent and become a champion.
+                </p>
+
+                <!-- DATE AND TIME -->
+                <div class="event-details">
+
+                    <p>
+                        <strong>Tournament Date:</strong>
+                        25 December 2026 TO 27 December 2026
+                    </p>
+
+                    <p>
+                        <strong>Tournament Time:</strong>
+                        09:00 AM Onwards
+                    </p>
+
+                </div>
+
+
+                <!-- REGISTRATION BUTTONS -->
+                <div class="button-group">
+
+                    <a href="/football" class="main-button">
+                        Football Registration
+                    </a>
+                   
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="footer">
+
+            © 2026 Tournament Registration. All Rights Reserved.
+
+        </footer>
+
+    </div>
+
+</body>
+</html>

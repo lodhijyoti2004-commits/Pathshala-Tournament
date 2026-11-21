@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Football Registration</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="form-container">
+
+        <h1>TEAM DETAILS</h1>
+
+<form method="POST" action="/football">
+
+            <!-- TEAM DETAILS -->
+
+            <div class="form-group">
+                <label>School Name</label>
+                <input type="text" name="school_name" required>
+            </div>
+
+            <div class="form-group">
+                <label>School Address</label>
+                <textarea name="school_address" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Coach Contact Number</label>
+                <input type="text" name="coach_name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Team Coach Contact Number</label>
+
+                <div class="phone-input">
+                    <span>+91</span>
+
+                    <input type="text"
+                           name="coach_Contact_number"
+                           placeholder="10 digit number"
+                           maxlength="10"
+                           pattern="[0-9]{10}"
+                           inputmode="numeric"
+                           oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)"
+                           required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Team Manager Name</label>
+                <input type="text" name="manager_name">
+            </div>
+
+            <div class="form-group">
+                <label>Team Manager Contact number</label>
+
+                <div class="phone-input">
+                    <span>+91</span>
+
+                    <input type="text"
+                           name="manager_Contact_number"
+                           placeholder="10 digit number"
+                           maxlength="10"
+                           pattern="[0-9]{10}"
+                           inputmode="numeric"
+                           oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email ID</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your Gmail address"
+                    pattern="[a-zA-Z0-9._%+-]+@gmail\.com"
+                    title="Please enter a valid Gmail address ending with @gmail.com"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label>
+
+                <div class="radio-group">
+
+                    <label>
+                        <input type="radio"
+                               name="gender"
+                               value="Girls"
+                               required>
+                        Girls
+                    </label>
+
+                    <label>
+                        <input type="radio"
+                               name="gender"
+                               value="Boys">
+                        Boys
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Age Category</label>
+
+                <div class="category-group">
+
+                    <label>
+                        <input type="radio"
+                               name="category"
+                               value="Under 12"
+                               required>
+                        Under 12
+                    </label>
+
+                    <label>
+                        <input type="radio"
+                               name="category"
+                               value="Under 15">
+                        Under 15
+                    </label>
+
+                </div>
+            </div>
+
+            <!-- PLAYERS DETAILS -->
+
+            <h2>PLAYERS DETAILS</h2>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Sr. no.</th>
+                            <th>Name</th>
+                            <th>Date of Birth</th>
+                            <th>Gender</th>
+                            <th>Contact number</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for i in range(1, 11) %}
+
+                        <tr>
+
+                            <td>{{ i }}</td>
+
+                            <td>
+                                <input type="text"
+                                       name="player_{{ i }}_name">
+                            </td>
+
+                            <td>
+                                <input type="date"
+                                       name="player_{{ i }}_dob">
+                            </td>
+
+                            <td>
+                                <select name="player_{{ i }}_gender">
+                                    <option value="">Select</option>
+                                    <option value="Girls">Girls</option>
+                                    <option value="Boys">Boys</option>
+                                </select>
+                            </td>
+
+                            <td>
+                                <input type="tel"
+                                       name="player_{{ i }}_phone"
+                                       maxlength="10"
+                                       pattern="[0-9]{10}"
+                                       inputmode="numeric"
+                                       oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)">
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <!-- NOTE -->
+
+            <div class="note-box">
+
+                <h3>NOTE</h3>
+
+                <p>
+                    During the match, if we feel that any player is older
+                    than the selected age category, we may check the
+                    player's Aadhaar Card. Therefore, all teams must carry
+                    the Aadhaar Cards of all players.
+                </p>
+
+            </div>
+
+            <button type="submit" class="submit-button">
+                Submit Registration
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
+

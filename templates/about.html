@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="main-container">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div class="logo-box">
+                <img src="{{ url_for('static', filename='final logo.png') }}"
+                     alt="Tournament Logo">
+            </div>
+
+            <nav class="navbar">
+                <a href="/">Home</a>
+                <a href="/football-info">Football</a>
+                <a href="/basketball-info">Basketball</a>
+                <a href="/about">About Us</a>
+                <a href="/contact">Contact</a>
+            </nav>
+
+        </header>
+
+
+        <!-- ABOUT US CONTENT -->
+        <section class="about-page">
+
+            <img src="{{ url_for('static', filename='pathshala.png') }}"
+                 alt="Pathshala Image"
+                 class="about-wide-image">
+
+            <div class="about-text">
+                <!-- ABOUT US OPTIONS -->
+
+<div class="about-options">
+
+    <a href="/our-journey">Our Journey</a>
+    <a href="/academics">Academics</a>
+    <a href="/sports">Sports</a>
+    <a href="/campus">Campus</a>
+
+</div>
+
+                <p>
+                    <strong>Srotoshwini</strong> is a Vadodara city based Trust,
+                    registered in 2010, primarily aimed at working towards
+                    the development of underprivileged children and women.
+                </p>
+
+                <p>
+                    The Trust is 12AA, 80G and FCRA compliant.
+                    There are 3 main initiatives that run under the Trust.
+                </p>
+
+                <p>
+                    <strong>Pathshala</strong> is an informal school that has
+                    a hybrid learning program which focuses on creative,
+                    child-centred education and overall development.
+                    Pathshala Informal School: a school that has a hybrid learning program that marries the guidelines of Reggio Emilia Philosophy of child-centric education (Project Based Learning) with NIOS board learning expectations so the end result is a very skilled individual ready for joining the workforce.
+Pathshala Hostel: a residential facility for children where the focus is, all round development of the child including academics, sports, extra curricular activities, vocational training & career counseling. Pathshala classes now run on hostel campus.
+                </p>
+                <p>
+                    Pathshala is an informal school and residential hostel facility for 100 children. Our focus from the very beginning has been of holistic learning. Learning @ Pathshala is based on the following core principles –
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            © 2026 Tournament Registration. All Rights Reserved.
+        </footer>
+
+    </div>
+
+</body>
+</html>

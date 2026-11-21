@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        /* =========================
+           ADMIN LOGIN BOX
+        ========================= */
+
+        .admin-login-box {
+            width: 90%;
+            max-width: 450px;
+            margin: 100px auto;
+            padding: 35px;
+
+            background: rgba(255, 255, 255, 0.97);
+
+            border-radius: 18px;
+
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+
+            box-sizing: border-box;
+
+            text-align: center;
+
+            /* FIX: login box overlay ke upar rahe */
+            position: relative;
+            z-index: 10;
+        }
+
+
+        /* =========================
+           OVERLAY FIX
+        ========================= */
+
+        .overlay {
+            pointer-events: none;
+        }
+
+
+        /* =========================
+           HEADING
+        ========================= */
+
+        .admin-login-box h1 {
+            color: #172b4d;
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
+           DESCRIPTION
+        ========================= */
+
+        .admin-login-box p {
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           INPUT BOXES
+        ========================= */
+
+        .admin-login-box input {
+            width: 100%;
+
+            padding: 13px;
+
+            margin-bottom: 15px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 8px;
+
+            box-sizing: border-box;
+
+            font-size: 15px;
+
+            background: white;
+
+            color: #222;
+
+            position: relative;
+            z-index: 11;
+        }
+
+
+        .admin-login-box input:focus {
+            outline: none;
+
+            border-color: #1d6fdc;
+
+            box-shadow: 0 0 5px rgba(29, 111, 220, 0.25);
+        }
+
+
+        /* =========================
+           LOGIN BUTTON
+        ========================= */
+
+        .admin-login-button {
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #172b4d;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            position: relative;
+            z-index: 11;
+        }
+
+
+        .admin-login-button:hover {
+            background: #1d6fdc;
+        }
+
+
+        /* =========================
+           ERROR MESSAGE
+        ========================= */
+
+        .admin-error {
+            margin-top: 15px;
+
+            padding: 10px;
+
+            background: #ffe5e5;
+
+            color: #c62828;
+
+            border-radius: 8px;
+        }
+
+
+        /* =========================
+           BACK TO HOME
+        ========================= */
+
+        .admin-home-button {
+            display: inline-block;
+
+            margin-top: 20px;
+
+            color: #172b4d;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            position: relative;
+            z-index: 11;
+        }
+
+
+        .admin-home-button:hover {
+            color: #1d6fdc;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- Background overlay -->
+    <div class="overlay"></div>
+
+
+    <!-- ADMIN LOGIN BOX -->
+
+    <div class="admin-login-box">
+
+        <h1>🔐 Admin Login</h1>
+
+        <p>Login to view all tournament registrations.</p>
+
+
+        <form method="POST" action="/admin-login">
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Admin Username"
+                autocomplete="username"
+                required
+            >
+
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Admin Password"
+                autocomplete="current-password"
+                required
+            >
+
+
+            <button
+                type="submit"
+                class="admin-login-button">
+                Login
+            </button>
+
+        </form>
+
+
+        {% if error %}
+
+            <div class="admin-error">
+                {{ error }}
+            </div>
+
+        {% endif %}
+
+
+        <a
+            href="/"
+            class="admin-home-button">
+            🏠 Back to Home
+        </a>
+
+    </div>
+
+
+</body>
+
+</html>

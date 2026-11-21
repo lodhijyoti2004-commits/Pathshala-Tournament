@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        .overlay {
+            pointer-events: none;
+        }
+
+        .admin-dashboard {
+            width: 95%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 18px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+            z-index: 10;
+        }
+
+        .admin-dashboard h1 {
+            text-align: center;
+            color: #172b4d;
+            margin-bottom: 20px;
+        }
+
+        /* SEARCH */
+
+        .search-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 10px 0 30px;
+            position: relative;
+            z-index: 12;
+        }
+
+        .search-box input {
+            width: 60%;
+            max-width: 500px;
+            padding: 12px 15px;
+            border: 1px solid #dce3eb;
+            border-radius: 8px;
+            font-size: 15px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: #1d6fdc;
+        }
+
+        .search-button,
+        .clear-button {
+            padding: 12px 22px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .search-button {
+            background: #172b4d;
+        }
+
+        .search-button:hover {
+            background: #1d6fdc;
+        }
+
+        .clear-button {
+            background: #667085;
+        }
+
+        .clear-button:hover {
+            background: #475467;
+        }
+
+        .no-search-result {
+            display: none;
+            text-align: center;
+            color: #667085;
+            font-size: 16px;
+            margin: 20px 0;
+        }
+
+        /* COUNT CARDS */
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin: 10px 0 40px;
+        }
+
+        .stat-card {
+            width: 220px;
+            padding: 25px 20px;
+            text-align: center;
+            border: 1px solid #dce3eb;
+            border-radius: 15px;
+            background: #f5f7fa;
+            color: #172b4d;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+            transition: 0.3s ease;
+            position: relative;
+            z-index: 11;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .stat-card h3 {
+            margin: 5px 0 10px;
+            font-size: 18px;
+            color: #172b4d;
+        }
+
+        .stat-card p {
+            margin: 0;
+            font-size: 36px;
+            font-weight: bold;
+            color: #1d6fdc;
+        }
+
+        .stat-card span {
+            display: block;
+            margin-top: 5px;
+            font-size: 13px;
+            color: #667085;
+        }
+
+        /* SECTIONS */
+
+        .admin-section {
+            margin-top: 30px;
+        }
+
+        .admin-section h2 {
+            color: #172b4d;
+            border-bottom: 2px solid #dce3eb;
+            padding-bottom: 10px;
+        }
+
+        /* REGISTRATION CARD */
+
+        .registration-card {
+            background: #f5f7fa;
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 10px;
+            overflow-wrap: anywhere;
+            position: relative;
+            z-index: 11;
+        }
+
+        .registration-card p {
+            margin: 8px 0;
+            color: #202733;
+        }
+
+        .registration-card strong {
+            color: #172b4d;
+        }
+
+        /* PLAYERS TABLE */
+
+        .players-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 15px;
+            position: relative;
+            z-index: 11;
+        }
+
+        .players-table {
+            width: 100%;
+            min-width: 650px;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        .players-table th {
+            background: #172b4d;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .players-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* DELETE BUTTON */
+
+        .delete-form {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .delete-button {
+            padding: 11px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #dc3545;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .delete-button:hover {
+            background: #b02a37;
+        }
+
+        /* ADMIN BUTTONS */
+
+        .admin-buttons {
+            text-align: center;
+            margin-top: 30px;
+            position: relative;
+            z-index: 11;
+        }
+
+        .admin-button {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 5px;
+            background: #172b4d;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            position: relative;
+            z-index: 12;
+        }
+
+        .admin-button:hover {
+            background: #1d6fdc;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            .admin-dashboard {
+                width: 94%;
+                padding: 20px;
+                margin: 25px auto;
+            }
+
+            .admin-dashboard h1 {
+                font-size: 25px;
+            }
+
+            .admin-section h2 {
+                font-size: 20px;
+            }
+
+            .registration-card {
+                padding: 15px;
+            }
+
+            .stat-card {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .search-box input {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .search-button,
+            .clear-button {
+                width: 100%;
+            }
+
+            .delete-form {
+                text-align: center;
+            }
+
+            .delete-button {
+                width: 100%;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="admin-dashboard">
+
+        <h1>📋 Admin Dashboard</h1>
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="registrationSearch"
+                placeholder="🔎 Search School Name or Email"
+                onkeyup="searchRegistrations()"
+            >
+
+            <button
+                type="button"
+                class="search-button"
+                onclick="searchRegistrations()">
+                Search
+            </button>
+
+            <button
+                type="button"
+                class="clear-button"
+                onclick="clearSearch()">
+                Clear
+            </button>
+
+        </div>
+
+        <p id="noSearchResult" class="no-search-result">
+            No matching registration found.
+        </p>
+
+
+        <!-- REGISTRATION COUNTS -->
+
+        <div class="stats-container">
+
+            <div class="stat-card">
+                <div class="stat-icon">⚽</div>
+                <h3>Football Teams</h3>
+                <p>{{ football_count }}</p>
+                <span>Teams Registered</span>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🏀</div>
+                <h3>Basketball Teams</h3>
+                <p>{{ basketball_count }}</p>
+                <span>Teams Registered</span>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">📋</div>
+                <h3>Total Registrations</h3>
+                <p>{{ total_count }}</p>
+                <span>All Registrations</span>
+            </div>
+
+        </div>
+
+
+        <!-- FOOTBALL -->
+
+        <div class="admin-section">
+
+            <h2>⚽ Football Registrations</h2>
+
+            {% if football_registrations %}
+
+                {% for registration in football_registrations %}
+
+                    <div class="registration-card">
+
+                        {% if registration.get('school_name') %}
+                            <p>
+                                <strong>School Name:</strong>
+                                {{ registration.get('school_name') }}
+                            </p>
+                        {% endif %}
+
+                        {% if registration.get('school_address') %}
+                            <p>
+                                <strong>School Address:</strong>
+                                {{ registration.get('school_address') }}
+                            </p>
+                        {% endif %}
+
+                        {% if registration.get('coach_name') %}
+                            <p>
+                                <strong>Coach Name:</strong>
+                                {{ registration.get('coach_name') }}
+                            </p>
+                        {% endif %}
+
+                        {% if registration.get('coach_number') %}
+                            <p>
+                                <strong>Coach Number:</strong>
+                                +91 {{ registration.get('coach_number') }}
+                            </p>
+                        {% endif %}
+
+                        {% if registration.get('manager_name') %}
+                            <p>
+                                <strong>Team Manager:</strong>
+                                {{ registration.get('manager_name') }}
+                            </p>
+                        {% endif %}
+
+                        {% if registration.get('manager_number') %}
+                            <p>
+                                <strong>Manager Number:</strong>
+                                +91 {{ registration.get('manager_number') }}
+                            </p>
+                        {% endif %}
+
+                        {% if registration.get('email') %}
+                            <p>
+                                <strong>Email:</strong>
+                                {{ registration.get('email') }}
+                            </p>
+                        {% endif %}
+
+                        {% if registration.get('gender') %}
+                            <p>
+                                <strong>Gender:</strong>
+                                {{ registration.get('gender') }}
+                            </p>
+                        {% endif %}
+
+                        {% if registration.get('category') %}
+                            <p>
+                                <strong>Age Category:</strong>
+                                {{ registration.get('category') }}
+                            </p>
+                        {% endif %}
+
+
+                        <h3>Players</h3>
+
+                        <div class="players-table-wrapper">
+
+                            <table class="players-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.</th>
+                                        <th>Name</th>
+                                        <th>Date of Birth</th>
+                                        <th>Gender</th>
+                                        <th>Phone Number</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    {% for i in range(1, 11) %}
+
+                                        {% if registration.get('player_' ~ i ~ '_name') %}
+
+                                            <tr>
+
+                                                <td>{{ i }}</td>
+
+                                                <td>
+                                                    {{ registration.get('player_' ~ i ~ '_name') }}
+                                                </td>
+
+                                                <td>
+                                                    {{ registration.get('player_' ~ i ~ '_dob', '') }}
+                                                </td>
+
+                                                <td>
+                                                    {{ registration.get('player_' ~ i ~ '_gender', '') }}
+                                                </td>
+
+                                                <td>
+                                                    {{ registration.get('player_' ~ i ~ '_phone', '') }}
+                                                </td>
+
+                                            </tr>
+
+                                        {% endif %}
+
+                                    {% endfor %}
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <!-- DELETE FOOTBALL -->
+
+                        <form
+                            method="POST"
+                            class="delete-form"
+                            action="/delete-registration/football/{{ registration.get('registration_id') }}"
+                            onsubmit="return confirm('Are you sure you want to delete this Football registration?');">
+
+                            <button type="submit" class="delete-button">
+                                🗑️ Delete Registration
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <p>No Football registrations yet.</p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- BASKETBALL -->
+
+        <div class="admin-section">
+
+            <h2>🏀 Basketball Registrations</h2>
+
+            {% if basketball_registrations %}
+
+                {% for registration in basketball_registrations %}
+
+                    <div class="registration-card">
+
+                        {% if registration.get('school_name') %}
+                            <p>
+                                <strong>School Name:</strong>
+                                {{ registration.get('school_name') }}
+                            </p>
+                        {% endif %}
+
+                        {% if registration.get('school_address') %}
+                            <p>
+                                <strong>School Address:</strong>
+                                {{ registration.get('school_address') }}
+                            </p>
+                        {% endif %}
+
+                        {% if registration.get('coach_name') %}
+                            <p>
+                                <strong>Coach Name:</strong>
+                                {{ registration.get('coach_name') }}
+                            </p>
+                        {% endif %}
+
+                        {% if registration.get('coach_number') %}
+                            <p>
+                                <strong>Coach Number:</strong>
+                                +91 {{ registration.get('coach_number') }}
+                            </p>
+                        {% endif %}
+
+                        {% if registration.get('manager_name') %}
+                            <p>
+                                <strong>Team Manager:</strong>
+                                {{ registration.get('manager_name') }}
+                            </p>
+                        {% endif %}
+
+                        {% if registration.get('manager_number') %}
+                            <p>
+                                <strong>Manager Number:</strong>
+                                +91 {{ registration.get('manager_number') }}
+                            </p>
+                        {% endif %}
+
+                        {% if registration.get('email') %}
+                            <p>
+                                <strong>Email:</strong>
+                                {{ registration.get('email') }}
+                            </p>
+                        {% endif %}
+
+                        {% if registration.get('gender') %}
+                            <p>
+                                <strong>Gender:</strong>
+                                {{ registration.get('gender') }}
+                            </p>
+                        {% endif %}
+
+                        {% if registration.get('category') %}
+                            <p>
+                                <strong>Age Category:</strong>
+                                {{ registration.get('category') }}
+                            </p>
+                        {% endif %}
+
+
+                        <h3>Players</h3>
+
+                        <div class="players-table-wrapper">
+
+                            <table class="players-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.</th>
+                                        <th>Name</th>
+                                        <th>Date of Birth</th>
+                                        <th>Gender</th>
+                                        <th>Phone Number</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    {% for i in range(1, 11) %}
+
+                                        {% if registration.get('player_' ~ i ~ '_name') %}
+
+                                            <tr>
+
+                                                <td>{{ i }}</td>
+
+                                                <td>
+                                                    {{ registration.get('player_' ~ i ~ '_name') }}
+                                                </td>
+
+                                                <td>
+                                                    {{ registration.get('player_' ~ i ~ '_dob', '') }}
+                                                </td>
+
+                                                <td>
+                                                    {{ registration.get('player_' ~ i ~ '_gender', '') }}
+                                                </td>
+
+                                                <td>
+                                                    {{ registration.get('player_' ~ i ~ '_phone', '') }}
+                                                </td>
+
+                                            </tr>
+
+                                        {% endif %}
+
+                                    {% endfor %}
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <!-- DELETE BASKETBALL -->
+
+                        <form
+                            method="POST"
+                            class="delete-form"
+                            action="/delete-registration/basketball/{{ registration.get('registration_id') }}"
+                            onsubmit="return confirm('Are you sure you want to delete this Basketball registration?');">
+
+                            <button type="submit" class="delete-button">
+                                🗑️ Delete Registration
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <p>No Basketball registrations yet.</p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- ADMIN BUTTONS -->
+
+        <div class="admin-buttons">
+
+            <a href="/" class="admin-button">
+                🏠 Home
+            </a>
+
+            <a href="/admin-logout" class="admin-button">
+                🔒 Logout
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- SEARCH JAVASCRIPT -->
+
+    <script>
+
+        function searchRegistrations() {
+
+            const searchInput =
+                document.getElementById("registrationSearch");
+
+            const searchValue =
+                searchInput.value.trim().toLowerCase();
+
+            const cards =
+                document.querySelectorAll(".registration-card");
+
+            const noResult =
+                document.getElementById("noSearchResult");
+
+            let found = false;
+
+
+            cards.forEach(function(card) {
+
+                const cardText =
+                    card.textContent.toLowerCase();
+
+                if (
+                    searchValue === "" ||
+                    cardText.includes(searchValue)
+                ) {
+
+                    card.style.display = "block";
+                    found = true;
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+
+            if (searchValue !== "" && !found) {
+
+                noResult.style.display = "block";
+
+            } else {
+
+                noResult.style.display = "none";
+
+            }
+
+        }
+
+
+        function clearSearch() {
+
+            document.getElementById("registrationSearch").value = "";
+
+            const cards =
+                document.querySelectorAll(".registration-card");
+
+            cards.forEach(function(card) {
+
+                card.style.display = "block";
+
+            });
+
+
+            document.getElementById("noSearchResult").style.display = "none";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,1111 @@
+/* ================= GENERAL ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: white;
+
+    background-image: url("sports-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Background Dark Layer */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 0;
+}
+
+.main-container {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 55px;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+/* Logo */
+.logo-box img {
+    width: 115px;
+    height: 115px;
+    object-fit: contain;
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #ffd700;
+}
+
+/* ================= HOME PAGE ================= */
+
+.hero-section {
+    min-height: 570px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.small-heading {
+    color: #ffd700;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 {
+    font-size: 55px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.hero-content h1 span {
+    color: #ffd700;
+}
+
+.description {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+/* ================= BUTTONS ================= */
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Both Buttons */
+.main-button,
+.second-button {
+    display: inline-block;
+    margin-top: 15px;
+
+    padding: 15px 25px;
+    background: transparent;
+    color: white;
+
+    border: 2px solid white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+
+    transition: 0.3s ease;
+}
+
+/* Football Button */
+.main-button:hover {
+    background: #1683ff;
+    color: white;
+    border-color: black;
+}
+
+/* Basketball Button */
+.second-button:hover {
+    background: #1683ff;
+    color: white;
+    border-color: black;
+}
+
+/* ================= ABOUT & CONTACT ================= */
+
+.info-section {
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 30px 25px;
+
+    text-align: center;
+    background: rgba(0, 0, 0, 0.65);
+    border-radius: 12px;
+}
+
+.info-section h2 {
+    color: #ffd700;
+    margin-bottom: 15px;
+}
+
+.info-section p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+
+    background: rgba(0, 0, 0, 0.75);
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+    .header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .logo-box img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .navbar {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar a {
+        font-size: 14px;
+    }
+
+    .hero-content h1 {
+        font-size: 35px;
+    }
+
+    .small-heading {
+        font-size: 14px;
+    }
+
+    .description {
+        font-size: 16px;
+    }
+
+    .main-button,
+    .second-button {
+        padding: 12px 18px;
+        font-size: 14px;
+    }
+}
+/* ================= FOOTBALL FORM ================= */
+
+.form-container {
+    position: relative;
+    z-index: 1;
+
+    width: 92%;
+    max-width: 1250px;
+
+    margin: 40px auto;
+    padding: 35px;
+
+    background: rgba(0, 0, 0, 0.78);
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+}
+
+.form-container h1 {
+    text-align: center;
+    color: #ffd700;
+    margin-bottom: 35px;
+    font-size: 35px;
+}
+
+.form-container h2 {
+    text-align: center;
+    color: #ffd700;
+    margin-top: 45px;
+    margin-bottom: 25px;
+    font-size: 30px;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group > label {
+    display: block;
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 9px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 13px;
+
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+
+    font-size: 16px;
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.radio-group,
+.category-group {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.radio-group label,
+.category-group label {
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.radio-group input,
+.category-group input {
+    margin-right: 6px;
+}
+
+
+/* ================= PLAYERS TABLE ================= */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.95);
+    color: black;
+}
+
+th,
+td {
+    border: 1px solid #777;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background: #ffd700;
+    color: black;
+    font-size: 16px;
+}
+
+td:first-child {
+    font-weight: bold;
+    width: 70px;
+}
+
+td input,
+td select {
+    width: 100%;
+    padding: 10px;
+
+    border: 1px solid #999;
+    border-radius: 4px;
+
+    font-size: 14px;
+}
+
+td input:focus,
+td select:focus {
+    outline: 2px solid #1683ff;
+}
+
+
+/* ================= NOTE ================= */
+
+.note-box {
+    margin-top: 35px;
+    padding: 20px;
+
+    background: rgba(255, 215, 0, 0.15);
+    border-left: 5px solid #ffd700;
+    border-radius: 8px;
+}
+
+.note-box h3 {
+    color: #ffd700;
+    margin-bottom: 10px;
+}
+
+.note-box p {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* ================= SUBMIT BUTTON ================= */
+
+.submit-button {
+    display: block;
+
+    margin: 35px auto 0;
+    padding: 15px 35px;
+
+    background: #1683ff;
+    color: white;
+
+    border: none;
+    border-radius: 7px;
+
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.submit-button:hover {
+    background: #005dcc;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+    .form-container {
+        width: 96%;
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .form-container h1 {
+        font-size: 27px;
+    }
+
+    .form-container h2 {
+        font-size: 24px;
+    }
+
+    .form-group > label {
+        font-size: 15px;
+    }
+
+    .note-box p {
+        font-size: 14px;
+    }
+}
+/* Small Team Details Fields */
+
+.form-container {
+    max-width: 1000px;
+}
+
+.form-group {
+    max-width: 650px;
+    margin: 0 auto 18px;
+}
+
+.form-container h1 {
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group textarea {
+    padding: 10px;
+    font-size: 14px;
+}
+
+.form-group > label {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+/* ================= PHONE NUMBER ================= */
+
+.phone-input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.phone-input span {
+    background: #eeeeee;
+    color: #222222;
+    padding: 10px 12px;
+    border: 1px solid #cccccc;
+    border-right: none;
+    border-radius: 6px 0 0 6px;
+    font-weight: bold;
+}
+
+.phone-input input {
+    flex: 1;
+    min-width: 0;
+    border-radius: 0 6px 6px 0 !important;
+}
+/* Email field in one line */
+
+.email-input {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+}
+
+.email-input input {
+    flex: 1;
+    width: auto !important;
+    min-width: 0;
+    border-radius: 6px 0 0 6px !important;
+}
+
+.email-input span {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    background: #eeeeee;
+    color: #222222;
+    padding: 10px 12px;
+    border: 1px solid #cccccc;
+    border-left: none;
+    border-radius: 0 6px 6px 0;
+    font-weight: bold;
+}
+.email-input {
+    position: relative;
+    width: 100%;
+}
+
+.email-input input {
+    width: 100%;
+    padding-right: 110px !important;
+    box-sizing: border-box;
+}
+
+.email-suffix {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    color: #555;
+    pointer-events: none;
+}
+/* Gmail fixed on the left side */
+
+.email-input {
+    position: relative;
+    width: 100%;
+}
+
+.email-input input {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 95px !important;
+    padding-right: 10px !important;
+}
+
+.email-suffix {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    pointer-events: none;
+}
+.about-section {
+    text-align: center;
+    margin: 30px auto;
+}
+
+.about-image {
+    width: 280px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 20px auto;
+    display: block;
+}
+/* About Us Page - Center Alignment */
+
+.about-page {
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 30px auto !important;
+    padding: 20px !important;
+    text-align: center !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.about-page img.large-about-image {
+    display: block !important;
+    width: 75% !important;
+    max-width: 900px !important;
+    height: auto !important;
+    margin: 0 auto 30px auto !important;
+    float: none !important;
+    border-radius: 12px;
+}
+
+.about-content {
+    display: block !important;
+    width: 100% !important;
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+    text-align: center !important;
+    color: white;
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+.about-content p {
+    text-align: center !important;
+    margin: 0 auto 20px auto !important;
+}/* ABOUT US PAGE */
+
+.about-page {
+    width: 100% !important;
+    max-width: 1400px !important;
+    margin: 35px auto !important;
+    padding: 0 40px 30px 40px !important;
+
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+
+    text-align: center !important;
+}
+
+/* Large Center Image */
+
+.about-wide-image {
+    display: block !important;
+    width: 75% !important;
+    max-width: 900px !important;
+    height: 350px !important;
+
+    margin: 0 auto 30px auto !important;
+    object-fit: cover !important;
+    border-radius: 10px !important;
+}
+/* Text Below Image */
+
+.about-text {
+    width: 100% !important;
+    max-width: 1180px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+
+    background: transparent !important;
+    color: white !important;
+
+    text-align: center !important;
+    font-size: 20px;
+    line-height: 1.7;
+}
+
+.about-text p {
+    margin: 0 auto 22px auto !important;
+    text-align: center !important;
+}
+
+/* Remove Old Black Box */
+
+.about-page::before,
+.about-page::after {
+    display: none !important;
+}
+/* ABOUT US OPTIONS - VERTICAL MENU */
+
+.about-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    margin: 30px auto;
+}
+
+.about-options a {
+    display: block;
+    width: 280px;
+    padding: 14px 20px;
+
+    color: white;
+    text-align: center;
+    text-decoration: none;
+
+    border: 1px solid white;
+    border-radius: 8px;
+    font-size: 18px;
+
+    transition: 0.3s;
+}
+
+.about-options a:hover {
+    background: white;
+    color: black;
+}/* OUR JOURNEY PAGE */
+
+.journey-page {
+    width: 100%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px 40px;
+    text-align: center;
+    background: transparent;
+}
+
+.journey-page h1 {
+    font-size: 38px;
+    margin-bottom: 35px;
+    color: white;
+}
+
+.journey-page h2 {
+    font-size: 28px;
+    margin-top: 35px;
+    margin-bottom: 18px;
+    color: white;
+}
+
+.journey-page p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+    color: white;
+    text-align: center;
+}
+/* ACADEMICS PAGE */
+
+.academics-page {
+    width: 100%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px 40px;
+    background: transparent;
+    text-align: center;
+}
+
+.academics-page h1 {
+    font-size: 38px;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.academics-page h2 {
+    font-size: 28px;
+    color: white;
+    margin-top: 35px;
+    margin-bottom: 18px;
+}
+
+.academics-page p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: white;
+    text-align: center;
+    margin: 0 auto 18px auto;
+}
+
+.success-stories {
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+.success-stories p {
+    margin-bottom: 22px;
+}/* SPORTS PAGE */
+
+.sports-page {
+    width: 100%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px 40px;
+    background: transparent;
+    text-align: center;
+}
+
+.sports-page h1 {
+    font-size: 38px;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.sports-page h2 {
+    font-size: 28px;
+    color: white;
+    margin-top: 35px;
+    margin-bottom: 18px;
+}
+
+.sports-page p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: white;
+    text-align: center;
+    margin: 0 auto 20px auto;
+}/* CAMPUS PAGE */
+
+.campus-page {
+    width: 100%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px 40px;
+    background: transparent;
+    text-align: center;
+}
+
+.campus-page h1 {
+    font-size: 38px;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.campus-page h2 {
+    font-size: 28px;
+    color: white;
+    margin-top: 40px;
+    margin-bottom: 25px;
+}
+
+.campus-page p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: white;
+    text-align: center;
+    margin: 0 auto 20px auto;
+}
+
+.facilities-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.facilities-list span {
+    color: white;
+    font-size: 18px;
+}
+body.journey-page {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        url("sports-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+}
+
+.journey-content {
+    width: 80%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 55px 0 70px;
+    text-align: center;
+}
+
+.journey-content h1 {
+    color: white;
+    font-size: 40px;
+    margin: 0 0 45px;
+}
+
+.journey-content h2 {
+    color: white;
+    font-size: 28px;
+    margin: 35px 0 18px;
+}
+
+.journey-content p {
+    color: white;
+    font-size: 17px;
+    line-height: 1.8;
+    margin: 0 auto 20px;
+    max-width: 1050px;
+}/* OUR JOURNEY NAVBAR - SAME AS ACADEMICS */
+
+body.journey-page .navbar {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 65px;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.85) !important;
+}
+
+/* LEFT LOGO */
+body.journey-page .navbar .logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+body.journey-page .navbar .logo img {
+    display: block;
+    width: 93px !important;
+    height: 115px !important;
+    object-fit: contain;
+}
+
+/* RIGHT MENU */
+body.journey-page .navbar nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+    margin-left: auto;
+}
+
+body.journey-page .navbar nav a {
+    display: inline-block;
+    color: white !important;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+/* ================= UNIFIED NAVBAR (OUR JOURNEY & ACADEMICS) ================= */
+
+/* Common Header Style */
+header, 
+.header,
+body.journey-page .navbar {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 90px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 15px 55px !important;
+    background: rgba(0, 0, 0, 0.75) !important;
+    box-sizing: border-box !important;
+}
+
+/* Left Logo alignment */
+.logo-box,
+body.journey-page .navbar .logo {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    margin: 0 !important;
+}
+
+.logo-box img,
+body.journey-page .navbar .logo img {
+    width: 85px !important;
+    height: 85px !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
+/* Right Menu alignment */
+.navbar,
+body.journey-page .navbar nav {
+    display: flex !important;
+    align-items: center !important;
+    gap: 30px !important;
+    margin-left: auto !important;
+}
+
+.navbar a,
+body.journey-page .navbar nav a {
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-size: 17px !important;
+    font-weight: bold !important;
+    white-space: nowrap !important;
+    transition: color 0.3s ease !important;
+}
+
+.navbar a:hover,
+body.journey-page .navbar nav a:hover {
+    color: #ffd700 !important;
+}/* ================= FIX JOURNEY HEADER TO MATCH ACADEMICS ================= */
+
+/* Header ko Full Width aur Top par set karna */
+body.journey-page header.navbar,
+body.journey-page .navbar {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 100px !important;
+    margin: 0 !important;
+    padding: 15px 40px !important;
+    
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    
+    background: rgba(0, 0, 0, 0.65) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Logo ko Left-most position dena */
+body.journey-page .logo-box {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+body.journey-page .logo-box img {
+    width: 85px !important;
+    height: 85px !important;
+    margin: 0 !important;
+    object-fit: contain !important;
+}
+
+/* Menu links ko Right-most side push karna */
+body.journey-page nav,
+body.journey-page .navbar nav {
+    display: flex !important;
+    align-items: center !important;
+    gap: 30px !important;
+    margin-left: auto !important;
+}
+
+body.journey-page nav a,
+body.journey-page .navbar nav a {
+    color: #ffffff !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+}
+
+body.journey-page nav a:hover {
+    color: #ffd700 !important;
+}
+/* ============================= */
+/* RULES & REGULATIONS PAGE */
+/* ============================= */
+
+.rules-page {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding-bottom: 50px;
+}
+
+.rules-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.rules-header h1 {
+    font-size: 42px;
+    margin-bottom: 8px;
+}
+
+.rules-header h2 {
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.rules-header p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 0 auto;
+    max-width: 750px;
+}
+
+.rules-section {
+    margin-bottom: 25px;
+}
+
+.rules-section h3 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.rules-box {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+    padding: 20px 24px;
+    min-height: 60px;
+}
+
+.rules-box p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.rules-final {
+    margin-top: 35px;
+    padding: 20px 25px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.rules-final h3 {
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.rules-final p {
+    margin: 0;
+    line-height: 1.7;
+}
