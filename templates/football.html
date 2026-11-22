@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +20,7 @@
 
         <h1>TEAM DETAILS</h1>
 
-<form method="POST" action="/football">
+        <form method="POST" action="/football">
 
             <!-- TEAM DETAILS -->
 
@@ -43,16 +43,16 @@
                 <label>Team Coach Contact Number</label>
 
                 <div class="phone-input">
-                    <span>+91</span>
+                <span>+91</span>
 
-                    <input type="text"
-                           name="coach_Contact_number"
-                           placeholder="10 digit number"
-                           maxlength="10"
-                           pattern="[0-9]{10}"
-                           inputmode="numeric"
-                           oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)"
-                           required>
+                <input type="text"
+                       name="coach_Contact_number"
+                       placeholder="10 digit number"
+                       maxlength="10"
+                       pattern="[0-9]{10}"
+                       inputmode="numeric"
+                       oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)"
+                       required>
                 </div>
             </div>
 
@@ -65,15 +65,15 @@
                 <label>Team Manager Contact number</label>
 
                 <div class="phone-input">
-                    <span>+91</span>
+                <span>+91</span>
 
-                    <input type="text"
-                           name="manager_Contact_number"
-                           placeholder="10 digit number"
-                           maxlength="10"
-                           pattern="[0-9]{10}"
-                           inputmode="numeric"
-                           oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)">
+                <input type="text"
+                       name="manager_Contact_number"
+                       placeholder="10 digit number"
+                       maxlength="10"
+                       pattern="[0-9]{10}"
+                       inputmode="numeric"
+                       oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)">
                 </div>
             </div>
 
@@ -157,7 +157,7 @@
 
                     <tbody>
 
-                        {% for i in range(1, 11) %}
+                        {% for i in range(1, 13) %}
 
                         <tr>
 
@@ -226,4 +226,4 @@
 </body>
 
 </html>
-
+```
